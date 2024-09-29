@@ -29,7 +29,7 @@ add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
 setup_geode_mod(${PROJECT_NAME})
 
-CPMAddPackage("gh:Tiago1257/APCpp-gd#0b5dd03")
+CPMAddPackage("gh:Tiago1257/APCpp-gd#018a4ae")
 
 target_link_libraries(${PROJECT_NAME} APCpp)
 target_include_directories(${PROJECT_NAME} PUBLIC ${APCpp_SOURCE_DIR})
