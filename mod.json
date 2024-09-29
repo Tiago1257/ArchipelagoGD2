@@ -1,0 +1,28 @@
+{
+	"geode": "3.7.1",
+	"gd": {
+		"win": "2.206"
+	},
+	"version": "v1.0.0-alpha.1",
+	"id": "1257plays.archipelagogd",
+	"name": "ArchipelagoGD",
+	"developer": "1257Plays",
+	"description": "Archipelago support for Geometry Dash!",
+	"resources": {
+		"sprites": [
+			"resources/APLogo.png"
+		],
+		"spritesheets": {
+			"APLogoSheet": [
+				"resources/APLogo.png"
+			]
+		}
+	},
+	"dependencies": [
+		{
+			"id": "geode.node-ids",
+			"importance": "required",
+			"version": ">=v1.12.0-beta.2"
+		}
+	]
+}
