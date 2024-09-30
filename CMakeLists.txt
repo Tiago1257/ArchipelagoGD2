@@ -7,8 +7,6 @@ set(USE_ZLIB OFF) # disable IXWebSocket's usage of zlib
 
 project(ArchipelagoGDAgain VERSION 1.0.0)
 
-link_directories(${PROJECT_NAME}/src/APCpp)
-
 add_library(${PROJECT_NAME} SHARED
     src/main.cpp
     src/ConnectPopup.cpp
@@ -29,7 +27,7 @@ add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
 setup_geode_mod(${PROJECT_NAME})
 
-CPMAddPackage("gh:Tiago1257/APCpp-gd#31917e9")
+CPMAddPackage("gh:Tiago1257/APCpp-gd#6274781")
 
 target_link_libraries(${PROJECT_NAME} APCpp)
 target_include_directories(${PROJECT_NAME} PUBLIC ${APCpp_SOURCE_DIR})
