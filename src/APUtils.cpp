@@ -1,4 +1,7 @@
 #include "APUtils.hpp"
+#include "Geode/binding/PlayLayer.hpp"
+#include "Geode/loader/Loader.hpp"
+#include "Geode/loader/Log.hpp"
 
 using namespace geode::prelude;
 
@@ -40,7 +43,7 @@ std::vector<std::string> items = {
     "Secret Coin"
 };
 
-    int gdBaseID = 130820130;
+int gdBaseID = 130820130;
     // note to index staff: this is due to the way Archipelago itself works 
     // fun fact, this is the GD release date in DD/MM/YYYY and a 0
 
@@ -55,20 +58,20 @@ void APUtils::recieveItem(int64_t id, bool notify) {
     // adding a specific override for can't let go because rob didn't add the apostrophe in the game but my apworld has it. god damn it rob
     else if (itemToRecieve == "Can't Let Go: Unlock") {
         Mod::get()->setSavedValue<bool>("Cant Let Go: Unlock", true);
-        /*
-        std::string title = "Item recieved!";
-        std::string desc = "You have been sent <cg>" + itemToRecieve + "</c>.";
-        */
-        AchievementNotifier::sharedState()->notifyAchievement("test", "test", "GJ_lockGray_001.png", true);
+        if (notify) {
+            Loader::get()->queueInMainThread(
+                [itemToRecieve]{APUtils::createNotification(itemToRecieve, false);}
+            );
+        }
     }
     else {
         Mod::get()->setSavedValue<bool>(itemToRecieve, true);
-        /*
-        std::string title = "Item recieved!";
-        std::string desc = "You have been sent <cg>" + itemToRecieve + "</c>.";
-        */
-        AchievementNotifier::sharedState()->notifyAchievement("test", "test", "GJ_lockGray_001.png", true);
-    };
+        if (notify) {
+                Loader::get()->queueInMainThread(
+                    [itemToRecieve]{APUtils::createNotification(itemToRecieve, false);}
+                );
+        }
+    }
 }
 
 void APUtils::clearItemState() {
@@ -77,8 +80,84 @@ void APUtils::clearItemState() {
         std::string itemToClear = items[index];
         Mod::get()->setSavedValue<bool>(itemToClear, false);
     }
+    Mod::get()->setSavedValue<bool>("Cant Let Go: Unlock", false);
 }
 
 void APUtils::checkLocation(int64_t id) {
-    // i really don't have anything huge to put here as i really don't need it for gd
+    Loader::get()->queueInMainThread(
+        []{APUtils::createNotification("ligma balls", true);}
+    );
+}
+
+void APUtils::createNotification(std::string name, bool location) {
+    const char* title;
+    std::string desc;
+    if (location) {
+        title = "Location checked!";
+        desc = "You checked <cg>" + name + " </c>and sent an item.";
+    } else {
+        title = "Item recieved!";
+        desc = "You have recieved <cg>" + name + "</c>.";
+    }
+    geode::log::info("{}", title);
+    geode::log::info("{}", desc);
+    geode::log::info("{}", name);
+    geode::log::info("location = {}", location);
+    AchievementNotifier::sharedState()->notifyAchievement(title, desc.c_str(), "APLogo.png"_spr, true);
+}
+
+void APUtils::deathLinkRecieved() {
+    Loader::get()->queueInMainThread(
+        []{if (PlayLayer* playLayer = PlayLayer::get()) playLayer->destroyPlayer(playLayer->m_player1, nullptr);}
+    );
+    geode::log::info("deathlink received. time to die");
+}
+
+bool APUtils::checkPortal(int id) {
+    switch (id) {
+        default:
+        return true;
+        case 13:
+        if (Mod::get()->getSavedValue<bool>("Ship Portal", false)) {
+            return true;
+        } else {
+            return false;
+        }
+        case 47:
+        if (Mod::get()->getSavedValue<bool>("Ball Portal", false)) {
+            return true;
+        } else {
+            return false;
+        }
+        case 111:
+        if (Mod::get()->getSavedValue<bool>("UFO Portal", false)) {
+            return true;
+        } else {
+            return false;
+        }
+        case 660:
+        if (Mod::get()->getSavedValue<bool>("Wave Portal", false)) {
+            return true;
+        } else {
+            return false;
+        }
+        case 745:
+        if (Mod::get()->getSavedValue<bool>("Robot Portal", false)) {
+            return true;
+        } else {
+            return false;
+        }
+        case 1331:
+        if (Mod::get()->getSavedValue<bool>("Spider Portal", false)) {
+            return true;
+        } else {
+            return false;
+        }
+        case 1933:
+        if (Mod::get()->getSavedValue<bool>("Swing Portal", false)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

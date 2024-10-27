@@ -94,6 +94,8 @@ void ConnectPopup::connectToAP(const char* url, const char* slot, const char* pa
     AP_SetItemClearCallback(&APUtils::clearItemState);
     AP_SetItemRecvCallback(&APUtils::recieveItem);
     AP_SetLocationCheckedCallback(&APUtils::checkLocation);
+    AP_SetDeathLinkSupported(true);
+    AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
     AP_Start();
     Mod::get()->setSavedValue<std::string>("recent-url", urlInput->getString());
     Mod::get()->setSavedValue<std::string>("recent-slot", slotInput->getString());

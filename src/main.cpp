@@ -1,8 +1,3 @@
-#include "Geode/binding/CCMenuItemSpriteExtra.hpp"
-#include "Geode/binding/FLAlertLayer.hpp"
-#include "Geode/binding/MenuLayer.hpp"
-#include "Geode/ui/BasedButtonSprite.hpp"
-#include <Geode/Geode.hpp>
 #include <Geode/modify/MenuLayer.hpp>
 #include "ConnectPopup.h"
 #include "APUtils.hpp"

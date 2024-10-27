@@ -13,7 +13,7 @@ add_library(${PROJECT_NAME} SHARED
     src/LevelSelectLayerHook.cpp
     src/PortalLogic.cpp
     src/APUtils.cpp
-    # src/checkTests.cpp
+    src/AchievementBarHook.cpp
     # Add any extra C++ source files here
 )
 
@@ -27,7 +27,7 @@ add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
 setup_geode_mod(${PROJECT_NAME})
 
-CPMAddPackage("gh:Tiago1257/APCpp-gd#6274781")
+CPMAddPackage("gh:Tiago1257/APCpp-gd#8a1ee15")
 
 target_link_libraries(${PROJECT_NAME} APCpp)
 target_include_directories(${PROJECT_NAME} PUBLIC ${APCpp_SOURCE_DIR})
