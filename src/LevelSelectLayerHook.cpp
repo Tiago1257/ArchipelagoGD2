@@ -1,5 +1,3 @@
-#include "GUI/CCControlExtension/CCScale9Sprite.h"
-#include <Geode/modify/LevelSelectLayer.hpp>
 #include <Geode/modify/LevelPage.hpp>
 
 using namespace geode::prelude;
@@ -7,7 +5,7 @@ using namespace geode::prelude;
 class $modify(APLevelPage, LevelPage) {   
     //thank you uproxide
     static void onModify(auto& self) {
-        if (!self.setHookPriority("LevelPage::updateDynamicPage", 1000002)) {
+        if (!self.setHookPriority("LevelPage::updateDynamicPage", -1)) {
             log::warn("uh oh");
         }
     }

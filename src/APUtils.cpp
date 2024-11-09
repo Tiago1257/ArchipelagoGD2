@@ -1,4 +1,5 @@
 #include "APUtils.hpp"
+#include "Archipelago.h"
 #include "Geode/binding/PlayLayer.hpp"
 #include "Geode/loader/Loader.hpp"
 #include "Geode/loader/Log.hpp"
@@ -49,14 +50,17 @@ int gdBaseID = 130820130;
 
 void APUtils::recieveItem(int64_t id, bool notify) {
     std::string itemToRecieve = items[id - gdBaseID];
+    // orbs and coins are wip and have no real code
+    /*
     if (itemToRecieve == "100 Mana Orbs") {
         AchievementNotifier::sharedState()->notifyAchievement("100 mana orvs", "mana orb", "GJ_lockGray_001.png", true);
     }
     else if (itemToRecieve == "Secret Coin") {
         AchievementNotifier::sharedState()->notifyAchievement("secret coin", "coiner", "GJ_lockGray_001.png", true);
     }
+    */
     // adding a specific override for can't let go because rob didn't add the apostrophe in the game but my apworld has it. god damn it rob
-    else if (itemToRecieve == "Can't Let Go: Unlock") {
+    if (itemToRecieve == "Can't Let Go: Unlock") {
         Mod::get()->setSavedValue<bool>("Cant Let Go: Unlock", true);
         if (notify) {
             Loader::get()->queueInMainThread(
@@ -83,11 +87,22 @@ void APUtils::clearItemState() {
     Mod::get()->setSavedValue<bool>("Cant Let Go: Unlock", false);
 }
 
-void APUtils::checkLocation(int64_t id) {
+void APUtils::checkLocationCallback(int64_t id) {
     Loader::get()->queueInMainThread(
         []{APUtils::createNotification("ligma balls", true);}
     );
 }
+
+void APUtils::sendItem(int64_t id) {
+    if (id < 23) {
+        AP_SendItem(id + gdBaseID);
+    } else {
+        switch (id) {
+            case 5001:
+            geode::log::info("g");
+        }
+    }
+};
 
 void APUtils::createNotification(std::string name, bool location) {
     const char* title;
@@ -108,9 +123,11 @@ void APUtils::createNotification(std::string name, bool location) {
 
 void APUtils::deathLinkRecieved() {
     Loader::get()->queueInMainThread(
-        []{if (PlayLayer* playLayer = PlayLayer::get()) playLayer->destroyPlayer(playLayer->m_player1, nullptr);}
+        []{
+            if (PlayLayer* playLayer = GameManager::get()->getPlayLayer()) playLayer->destroyPlayer(playLayer->m_player1, nullptr);
+            geode::log::info("deathlink received. time to die");
+        }
     );
-    geode::log::info("deathlink received. time to die");
 }
 
 bool APUtils::checkPortal(int id) {
@@ -118,46 +135,18 @@ bool APUtils::checkPortal(int id) {
         default:
         return true;
         case 13:
-        if (Mod::get()->getSavedValue<bool>("Ship Portal", false)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Mod::get()->getSavedValue<bool>("Ship Portal", false);
         case 47:
-        if (Mod::get()->getSavedValue<bool>("Ball Portal", false)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Mod::get()->getSavedValue<bool>("Ball Portal", false);
         case 111:
-        if (Mod::get()->getSavedValue<bool>("UFO Portal", false)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Mod::get()->getSavedValue<bool>("UFO Portal", false);
         case 660:
-        if (Mod::get()->getSavedValue<bool>("Wave Portal", false)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Mod::get()->getSavedValue<bool>("Wave Portal", false);
         case 745:
-        if (Mod::get()->getSavedValue<bool>("Robot Portal", false)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Mod::get()->getSavedValue<bool>("Robot Portal", false);
         case 1331:
-        if (Mod::get()->getSavedValue<bool>("Spider Portal", false)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Mod::get()->getSavedValue<bool>("Spider Portal", false);
         case 1933:
-        if (Mod::get()->getSavedValue<bool>("Swing Portal", false)) {
-            return true;
-        } else {
-            return false;
-        }
+        return Mod::get()->getSavedValue<bool>("Swing Portal", false);
     }
 }

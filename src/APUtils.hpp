@@ -5,9 +5,11 @@ namespace APUtils {
 
     void clearItemState();
 
-    void checkLocation(int64_t id);
+    void checkLocationCallback(int64_t id);
 
     void createNotification(std::string name, bool location);
+
+    void sendItem(int64_t id);
 
     void deathLinkRecieved();
 

@@ -77,8 +77,7 @@ bool ConnectPopup::setup() {
 void ConnectPopup::onConnect(CCObject*) {
     geode::createQuickPopup(
         "Connect",
-        /*"Are you sure you want to connect to Archipelago? When you agree to this, the mod will download all the required data from the MultiWorld and your game will restart in Archipelago mode.\n<cg>Server:</c> " + urlInput->getString() + "\n<cb>Slot</c>: " + slotInput->getString(),*/
-        "usually you'd see a cool thing confirming your data here but i don't wanna leak the url i'm using",
+        "Are you sure you want to connect to Archipelago? When you agree to this, your game will restart into Archipelago mode. To leave Archipelago mode, open this menu when connected and choose <cr>\"Disconnect\".</c>\n<cg>Server:</c> " + urlInput->getString() + "\n<cb>Slot</c>: " + slotInput->getString(),
         "No", "Yes",
         [this](auto, bool btn2) {
             if (btn2) {
@@ -93,7 +92,7 @@ void ConnectPopup::connectToAP(const char* url, const char* slot, const char* pa
     AP_Init(url, "Geometry Dash", slot, pass);
     AP_SetItemClearCallback(&APUtils::clearItemState);
     AP_SetItemRecvCallback(&APUtils::recieveItem);
-    AP_SetLocationCheckedCallback(&APUtils::checkLocation);
+    AP_SetLocationCheckedCallback(&APUtils::checkLocationCallback);
     AP_SetDeathLinkSupported(true);
     AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
     AP_Start();
@@ -101,17 +100,7 @@ void ConnectPopup::connectToAP(const char* url, const char* slot, const char* pa
     Mod::get()->setSavedValue<std::string>("recent-slot", slotInput->getString());
     Mod::get()->setSavedValue<std::string>("recent-pass", passInput->getString());
 }
-/*
-void itemClear() {
-    log::info("this is meant to clear items");
-}
-void itemReceive(int64_t item, bool sendNotif) {
-    log::info("this is meant to recieve items");
-}
-void checkLocation(int64_t item) {
-    log::info("this is meant to send items");
-}
-*/
+
 ConnectPopup* ConnectPopup::create() {
     auto* ret = new ConnectPopup();
 

@@ -14,6 +14,7 @@ add_library(${PROJECT_NAME} SHARED
     src/PortalLogic.cpp
     src/APUtils.cpp
     src/AchievementBarHook.cpp
+    src/PlayLayerHook.cpp
     # Add any extra C++ source files here
 )
 
