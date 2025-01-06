@@ -14,4 +14,6 @@ namespace APUtils {
     void deathLinkRecieved();
 
     bool checkPortal(int id);
+
+    void startArchipelago(const char* url, const char* slot, const char* pass);
 }

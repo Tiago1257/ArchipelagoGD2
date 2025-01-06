@@ -15,6 +15,7 @@ add_library(${PROJECT_NAME} SHARED
     src/APUtils.cpp
     src/AchievementBarHook.cpp
     src/PlayLayerHook.cpp
+    src/LoadingLayerHook.cpp
     # Add any extra C++ source files here
 )
 

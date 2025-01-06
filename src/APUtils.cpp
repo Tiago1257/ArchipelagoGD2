@@ -150,3 +150,13 @@ bool APUtils::checkPortal(int id) {
         return Mod::get()->getSavedValue<bool>("Swing Portal", true);
     }
 }
+
+void APUtils::startArchipelago(const char *url, const char *slot, const char *pass) {
+    AP_Init(url, "Geometry Dash", slot, pass);
+    AP_SetItemClearCallback(&APUtils::clearItemState);
+    AP_SetItemRecvCallback(&APUtils::recieveItem);
+    AP_SetLocationCheckedCallback(&APUtils::checkLocationCallback);
+    AP_SetDeathLinkSupported(true);
+    AP_SetDeathLinkRecvCallback(&APUtils::deathLinkRecieved);
+    AP_Start();
+}

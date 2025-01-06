@@ -8,6 +8,7 @@
 	"name": "ArchipelagoGD",
 	"developer": "1257Plays",
 	"description": "Archipelago support for Geometry Dash!",
+	"early-load": true,
 	"resources": {
 		"sprites": [
 			"resources/APLogo.png"
@@ -23,6 +24,23 @@
 			"id": "geode.node-ids",
 			"importance": "required",
 			"version": ">=1.17.0-alpha.1"
+		}
+	],
+	"incompatibilities": [
+		{
+			"id": "km7dev.gdps-switcher",
+			"version": "*",
+			"importance": "breaking"
+		},
+		{
+			"id": "teamtcm.geometry-dash-odyssey",
+			"version": "*",
+			"importance": "breaking"
+		},
+		{
+			"id": "capeling.geometry-dash-lunar",
+			"version": "*",
+			"importance": "breaking"
 		}
 	]
 }
