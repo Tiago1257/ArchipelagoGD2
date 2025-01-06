@@ -135,18 +135,18 @@ bool APUtils::checkPortal(int id) {
         default:
         return true;
         case 13:
-        return Mod::get()->getSavedValue<bool>("Ship Portal", false);
+        return Mod::get()->getSavedValue<bool>("Ship Portal", true);
         case 47:
-        return Mod::get()->getSavedValue<bool>("Ball Portal", false);
+        return Mod::get()->getSavedValue<bool>("Ball Portal", true);
         case 111:
-        return Mod::get()->getSavedValue<bool>("UFO Portal", false);
+        return Mod::get()->getSavedValue<bool>("UFO Portal", true);
         case 660:
-        return Mod::get()->getSavedValue<bool>("Wave Portal", false);
+        return Mod::get()->getSavedValue<bool>("Wave Portal", true);
         case 745:
-        return Mod::get()->getSavedValue<bool>("Robot Portal", false);
+        return Mod::get()->getSavedValue<bool>("Robot Portal", true);
         case 1331:
-        return Mod::get()->getSavedValue<bool>("Spider Portal", false);
+        return Mod::get()->getSavedValue<bool>("Spider Portal", true);
         case 1933:
-        return Mod::get()->getSavedValue<bool>("Swing Portal", false);
+        return Mod::get()->getSavedValue<bool>("Swing Portal", true);
     }
 }
