@@ -1,5 +1,5 @@
 {
-	"geode": "4.1.2",
+	"geode": "4.2.0",
 	"gd": {
 		"win": "2.2074"
 	},
@@ -19,28 +19,21 @@
 			]
 		}
 	},
-	"dependencies": [
-		{
-			"id": "geode.node-ids",
-			"importance": "required",
-			"version": ">=1.17.0-alpha.1"
-		}
-	],
-	"incompatibilities": [
-		{
-			"id": "km7dev.gdps-switcher",
+	"dependencies": {
+		"geode.node-ids": "1.18.0"
+	},
+	"incompatibilities": {
+		"km7dev.gdps-switcher": {
 			"version": "*",
 			"importance": "breaking"
 		},
-		{
-			"id": "teamtcm.geometry-dash-odyssey",
+		"teamtcm.geometry-dash-odyssey": {
 			"version": "*",
 			"importance": "breaking"
 		},
-		{
-			"id": "capeling.geometry-dash-lunar",
+		"capeling.geometry-dash-lunar": {
 			"version": "*",
 			"importance": "breaking"
 		}
-	]
+	}
 }
