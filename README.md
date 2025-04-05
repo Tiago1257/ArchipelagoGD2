@@ -3,20 +3,20 @@ This is where she makes a mod.
 
 <img src="logo.png" width="150" alt="the mod's logo" />
 
-*Update logo.png to change your mod's icon (please)*
+## This is not in a playable state! Contributions are welcome!
 
-## Getting started
-We recommend heading over to [the getting started section on our docs](https://docs.geode-sdk.org/getting-started/) for useful info on what to do next.
+This is a currently unofficial and unfinished mod that adds support for Geometry Dash in the [Archipelago MultiWorld Randomizer](https://archipelago.gg/).
 
-## Build instructions
-For more info, see [our docs](https://docs.geode-sdk.org/getting-started/create-mod#build)
-```sh
-# Assuming you have the CLI set up already
-geode build
-```
+It uses a (currently outdated) [fork](https://github.com/Tiago1257/APCpp-gd) of N00byKing's [APCpp](https://github.com/N00byKing/APCpp) which switches to static linking, for better use with the Geode SDK.
 
-# Resources
-* [Geode SDK Documentation](https://docs.geode-sdk.org/)
-* [Geode SDK Source Code](https://github.com/geode-sdk/geode/)
-* [Bindings](https://github.com/geode-sdk/bindings/)
-* [Dev Tools](https://github.com/geode-sdk/DevTools)
+The also unfinished and very broken code for the .apworld can be found [here](https://github.com/Tiago1257/Archipelago).
+
+## Special Thanks:
+- [N00byKing](https://github.com/N00byKing) - APCpp and general help with Archipelago
+- [dankmeme01](https://github.com/dankmeme01) - Help with Geode SDK + cross-compiling (and like 2 lines of code i yoinked from globed)
+- [matcool](https://github.com/matcool) - Help with Geode SDK + cross-compiling
+- [Prevter](https://github.com/Prevter) - Help with CMake and APCpp-gd
+- [Erymanthus](https://github.com/RayDeeUx), [hiimjasmine00](https://github.com/hiimjasmine00), [SpaghettDev](https://github.com/spaghettdev), [km7dev](https://github.com/Kingminer7), [underscored \(TechStudent10\)](https://github.com/TechStudent10), [Uproxide](https://github.com/uproxide), [TimeStepYT](https://github.com/timestepyt) - Additional C++ and Geode Help
+- The Archipelago, Rhythm Doctor Lounge and Geode SDK Discord Servers - Emotional Support + Progression Planning
+
+**Feel free to open issues and pull requests!**
