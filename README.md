@@ -16,7 +16,8 @@ The also unfinished and very broken code for the .apworld can be found [here](ht
 - [dankmeme01](https://github.com/dankmeme01) - Help with Geode SDK + cross-compiling (and like 2 lines of code i yoinked from globed)
 - [matcool](https://github.com/matcool) - Help with Geode SDK + cross-compiling
 - [Prevter](https://github.com/Prevter) - Help with CMake and APCpp-gd
-- [Erymanthus](https://github.com/RayDeeUx), [hiimjasmine00](https://github.com/hiimjasmine00), [SpaghettDev](https://github.com/spaghettdev), [km7dev](https://github.com/Kingminer7), [underscored \(TechStudent10\)](https://github.com/TechStudent10), [Uproxide](https://github.com/uproxide), [TimeStepYT](https://github.com/timestepyt) - Additional C++ and Geode Help
+- [Erymanthus](https://github.com/RayDeeUx), [hiimjasmine00](https://github.com/hiimjasmine00), [SpaghettDev](https://github.com/spaghettdev), [km7dev](https://github.com/Kingminer7), [underscored \(TechStudent10\)](https://github.com/TechStudent10), [Uproxide](https://github.com/uproxide), [TimeStepYT](https://github.com/timestepyt) and many others - Additional C++ and Geode Help
 - The Archipelago, Rhythm Doctor Lounge and Geode SDK Discord Servers - Emotional Support + Progression Planning
+- ...and many others possibly missing from here. if you helped in any way, shape or form and you're not here, please tell me!
 
 **Feel free to open issues and pull requests!**
